@@ -84,7 +84,7 @@ describe('Get Endpoints', () => {
 })
 
 describe('Get Endpoints', () => {
-	let queryKey = "hihi";
+	let queryKey = "purpose";
   it('should get the queried-key-in-description todo', async () => {
     const res = await request(app)
       .get(`/api/todos/searchRoute?search=${queryKey}`)
@@ -93,7 +93,7 @@ describe('Get Endpoints', () => {
 		id: 1,
         name:'Eating noddles',
         completed: true,
-		description: "testing hihi"
+		description: "testing purpose"
 	}])
   })
 })
