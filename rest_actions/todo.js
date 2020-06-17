@@ -4,10 +4,10 @@ exports.getAllTodos = ((req,res) => res.status(200) ? res.json(db): res.send("Er
 
 exports.createTodo = (req,res) => {
 	const newTodo = {
-		id: db[db.length-1].id +1,
-		name: req.body.name,
-		completed: req.body.completed,
-		description: req.body.description
+	  id: db[db.length-1].id +1,
+	  name: req.body.name,
+	  completed: req.body.completed,
+	  description: req.body.description
 	}
 	db.push(newTodo);
 	return res.json(newTodo);
@@ -16,18 +16,17 @@ exports.createTodo = (req,res) => {
 exports.getTodo = (req,res) => {
 	const requestedTodo = db.filter(todo => todo.id === Number(req.params.id));
 	(requestedTodo.length > 0) ? res.json(requestedTodo) : res.send("No such todo found")
-		
 }
 
 exports.updateTodo = (req,res) => {
 	const updatedTodo = {
-		id: Number(req.params.id),
-		name: req.body.name,
-		completed: req.body.completed,
-		description: req.body.description
+	  id: Number(req.params.id),
+	  name: req.body.name,
+	  completed: req.body.completed,
+	  description: req.body.description
 	}
 	db.map((todo,index) => {
-		todo.id === Number(updatedTodo.id) ? db[index] = updatedTodo : todo
+	  todo.id === Number(updatedTodo.id) ? db[index] = updatedTodo : todo
 	})
 	return res.json(db);
 }
@@ -60,7 +59,7 @@ exports.searchViaDescription = (req,res) => {
 	let searchQuery = req.query.search;
 	let dbAfterSearch = Object.assign([],db);
 	if(searchQuery) { 	
-		dbAfterSearch = dbAfterSearch.filter((todo) => todo.description.toLowerCase().includes(searchQuery.toLowerCase().trim()))	
+	  dbAfterSearch = dbAfterSearch.filter((todo) => todo.description.toLowerCase().includes(searchQuery.toLowerCase().trim()))	
 	}
 	return res.json(dbAfterSearch);
 }
