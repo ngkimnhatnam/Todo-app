@@ -1,52 +1,28 @@
-# Stepout Backend Intern Assignment
-
-You will have 7 days to complete your assignment. Please notify us when you are done with the tasks. Send an email to trung@stepout.fi when you are done or if you have any questions. Happy coding and good luck!
-
-## Installation and Setup
-
-
-```bash
-# Install dependencies for server
-npm install
-
-# Run the application
-npm run start
-
-# Server runs on http://localhost:3000 
-```
-
-## Assignment Instruction
-
-* The solution should be made within this expressJS application.
-* You can clone or fork the project. 
-* Use [/models/todo.js](./models/todo.js) for your Rest API data.
-* You are free to structure your Express JS application on how you like.
-* Your todos route must be `api/todos`.
-
-## Task
-
+## Development phases
 1. CRUD Restful API on route `/api/todos` for todo app:
-
-    * The application should be able to get all todos from [todo.js](./models/todo.js).
-    * The application should be able to add todo into [todo.js](./models/todo.js).
-    * The application should be able to update a todo info in [todo.js](./models/todo.js).
-    * The application should be able to remove a todo from [todo.js](./models/todo.js).
-
+	* Create routes folder and todo.js that contains all the future routes. Using Router to simplify the routes, plus requiring a helper file (not existent yet) to contain all route-related functions.
+	* In app.js, use "/api/todos" as prefix and append all defined todoRoutes as a variable
+	* Export app for future testing purpose
+	* Create folder helpers with todo.js file. In here, require the database from models. Create CRUD routes and return response as JSON
+	
 2. Filter:
-
-    * Create an API route where the application will show only complete todo.
-    * Create an API route where the application will show the todos on a aphabetical order of todos name.
-    * Create an API route where the application will show the todos on a reverse aphabetical order of todos name. 
-
+	* For showing only completed todos, use filter function with key 'completed' as true
+	* Use sort() with localeCompare function to arrange in A-Z order and vice-versa
+	
 3. Search:
-
-    * Modify your [todo.js](./models/todo.js) so that you can have a description for each todo.
-    * Your CRUD API should be able to work normally after the modification.
-    * Create an API route that will search for a todo based on the description.
-
-
-## Tip
-
-* Stepout team loves clean code and would love to see your consideration on readability and performance.
-* We love good test case if possible.
-* We love to learn about your development through a README
+	* Adding key 'description' to each existing object in todo array
+	* Add key 'description' in post/update route when creating new/updating todo
+	* Assign request search query to variable
+	* Use filter with both todo description and search query to lower case to be case-insensitive. Also trim() search query so that whitespaces be removed in prior
+	
+4. Testing:
+	* Install jest and supertest as devDependencies
+	* Create __test__ folder with todo.test.js file
+	* Change value for key 'test' in 'script' in package.json, adding "NODE_ENV=test jest --detectOpenHandles  --runInBand --forceExit"
+	* In todo.test.js, require app.js, todo.js in models as db and supertest as request to use HTTP requests
+	* Write unit testing for each CRUD route
+	
+	
+	
+	
+	
