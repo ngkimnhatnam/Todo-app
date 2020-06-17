@@ -12,10 +12,10 @@ describe("Get Endpoints", () => {
   })
 	
 	it("should get a random existing todo", async () => {
-	  const randomTodo = Math.floor(Math.random()*db.length);
-      const res = await request(app)
-        .get(`/api/todos/${randomTodo}`)
-      expect(res.body).toEqual(db.filter(todo => todo.id===randomTodo))
+    const randomTodo = Math.floor(Math.random()*db.length);
+    const res = await request(app)
+    .get(`/api/todos/${randomTodo}`)
+    expect(res.body).toEqual(db.filter(todo => todo.id===randomTodo))
   })
   
 	it("should return error from non-existing todo", async () => {
